@@ -10,9 +10,9 @@ function ModalOverlay(props) {
     )
 }
 
-function ModalBackDrop() {
+function ModalBackDrop(props) {
     return (
-        <div className={classes.backdrop} />
+        <div className={classes.backdrop} onClick={props.onClose}/>
     )
 }
 
@@ -22,7 +22,7 @@ function Modal(props) {
         <Fragment>
             {ReactDom.createPortal(<ModalOverlay> {props.children} </ModalOverlay>,
                  document.getElementById('overlays') )}
-            {ReactDom.createPortal(<ModalBackDrop />, document.getElementById('overlays'))}
+            {ReactDom.createPortal(<ModalBackDrop onClose={props.onClose}/>, document.getElementById('overlays'))}
         </Fragment>
     )
 }
